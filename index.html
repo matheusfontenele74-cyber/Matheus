@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matheus - Troca de Tela</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #003366; /* Azul escuro do panfleto */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            color: #333;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #fdb913; /* Amarelo do panfleto */
+            border: none;
+            border-radius: 5px;
+            color: #003366;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #e5a700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📱 Orçamento Troca de Tela</h2>
+    
+    <label>Nome do Celular:</label>
+    <input type="text" id="nome" placeholder="Ex: iPhone, Galaxy, Redmi">
+
+    <label>Marca:</label>
+    <input type="text" id="marca" placeholder="Ex: Apple, Samsung, Xiaomi">
+
+    <label>Modelo:</label>
+    <input type="text" id="modelo" placeholder="Ex: 13 Pro Max, S23 Ultra">
+
+    <label>Ano (Opcional):</label>
+    <input type="text" id="ano" placeholder="Ex: 2023">
+
+    <button onclick="enviarWhatsApp()">SOLICITAR ORÇAMENTO</button>
+</div>
+
+<script>
+    function enviarWhatsApp() {
+        // Seu número de telefone (com DDD e código do país)
+        const fone = "5511981659701";
+        
+        // Coleta os dados dos campos
+        const nome = document.getElementById('nome').value;
+        const marca = document.getElementById('marca').value;
+        const modelo = document.getElementById('modelo').value;
+        const ano = document.getElementById('ano').value;
+
+        if (nome === "" || modelo === "") {
+            alert("Por favor, preencha pelo menos o Nome e o Modelo do celular.");
+            return;
+        }
+
+        // Monta a mensagem
+        const mensagem = `Olá Matheus! Gostaria de um orçamento para troca de tela:%0A%0A` +
+                         `*Celular:* ${nome}%0A` +
+                         `*Marca:* ${marca}%0A` +
+                         `*Modelo:* ${modelo}%0A` +
+                         `*Ano:* ${ano}`;
+
+        // Redireciona para o link do WhatsApp
+        const url = `https://wa.me/${fone}?text=${mensagem}`;
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
